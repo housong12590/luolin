@@ -2,6 +2,8 @@ FROM python:3.6-alpine
 
 COPY . /loulin
 
+WORKDIR /loulin
+
 RUN cd /loulin \
     && python -m venv venv \
     && venv/bin/pip install -r requirements.txt \
@@ -12,6 +14,6 @@ RUN cd /loulin \
 EXPOSE 5000
 
 
-ENTRYPOINT ["/luolin/docker-entrypoint.sh"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
 
