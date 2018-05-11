@@ -6,10 +6,12 @@ RUN cd /loulin \
     && python -m venv venv \
     && venv/bin/pip install -r requirements.txt \
     && venv/bin/pip install gunicorn \
-    && export FLASK_APP=manage.py
-
+    && export FLASK_APP=manage.py \
+    && chmod +x docker-entrypoint.sh
 
 EXPOSE 5000
 
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
 
 
