@@ -12,6 +12,6 @@ RUN cd /loulin \
 EXPOSE 5000
 
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/luolin/docker-entrypoint.sh"]
 
 
