@@ -1,9 +1,7 @@
-# from app import create_app, cli
-#
-# app = create_app(None)
-# cli.register(app)
+from app import create_app, cli
 
-from app.luolin import app
+app = create_app(None)
+cli.register(app)
 
 
 @app.shell_context_processor
