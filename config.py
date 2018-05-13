@@ -41,6 +41,10 @@ class Config(object):
     DEBUG_LOG = 'logs/debug.log'
     ERROR_LOG = 'logs/error.log'
 
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:pss123546@123.207.152.86:3306/luolin'
 
-class TestConfig(Config):
-    TESTING = True
+    SQLALCHEMY_ECHO = True
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    LOG_TO_STDOUT = True
