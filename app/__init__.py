@@ -34,14 +34,16 @@ def configure_extensions(app):
     migrate.init_app(app, db)
     celery = Celery(
         app.name,
-        broker=app.config['REDIS_URI'],
-        backend=app.config['REDIS_URI']
+        broker=app.config['REDIS_URL'],
+        backend=app.config['REDIS_URL']
     )
     celery.conf.update(app.config)
 
 
 def configure_blueprints(app):
-    pass
+    from app.web import web_app as web
+
+    app.register_blueprint(web)
 
 
 def configure_error_handlers(app):
