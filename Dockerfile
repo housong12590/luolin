@@ -6,7 +6,7 @@ WORKDIR /loulin
 
 RUN cd /loulin \
     && mkdir -p ~/.pip \
-    && echo '[global]\nindex-url = https://pypi.doubanio.com/simple' > ~/.pip/pip.conf \
+    && echo '[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple' > ~/.pip/pip.conf \
     && python -m venv venv \
     && venv/bin/pip install -r requirements.txt -i https://pypi.doubanio.com/simple\
     && venv/bin/pip install gunicorn \
