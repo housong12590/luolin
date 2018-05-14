@@ -41,7 +41,7 @@ def configure_extensions(app):
 
 
 def configure_blueprints(app):
-    from app.web import web_app
+    from .web import web_app
 
     app.register_blueprint(web_app)
 
