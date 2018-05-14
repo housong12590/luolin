@@ -40,10 +40,10 @@ def configure_extensions(app):
     celery.conf.update(app.config)
 
 
-def configure_blueprints(app):
-    from .web import web_app
+def configure_blueprints(flask):
+    from app.web import web_app
 
-    app.register_blueprint(web_app)
+    flask.register_blueprint(web_app)
 
 
 def configure_error_handlers(app):
