@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .auth import LoginView
+from .auth import AuthView
 
 web = Blueprint(
     'web',
@@ -8,4 +8,8 @@ web = Blueprint(
     template_folder='templates',
     static_url_path='/web')
 
-LoginView.register(web)
+AuthView.register(web)
+
+from flask import url_for
+
+# print(url_for('web.AuthView:login'))
