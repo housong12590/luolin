@@ -1,12 +1,10 @@
-import unittest
-from tests import app
+SQLALCHEMY_DATABASE_URI = 'mysql://{user}:{password}@{host}:{port}/{database}'.format(
+    'user',
+    '123546',
+    '192.168.0.210',
+    3306,
+    'databases'
+)
 
 
-class UserModelCase(unittest.TestCase):
-
-    def setUp(self):
-        self.app_context = self.app_context()
-        self.app_context.push()
-
-    def tearDown(self):
-        pass
+print(SQLALCHEMY_DATABASE_URI)

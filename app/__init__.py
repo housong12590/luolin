@@ -5,12 +5,15 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_bootstrap import Bootstrap
-import flask.globals
+from flask_bootstrap3 import Bootstrap
+from flask_session import Session as Redis_Session
+from celery import Celery
 
-migrate = Migrate()
 db = SQLAlchemy()
+session = Redis_Session()
 bootstrap = Bootstrap()
+migrate = Migrate()
+celery = None
 
 
 def create_app(config_cls=Config):
@@ -24,9 +27,17 @@ def create_app(config_cls=Config):
 
 
 def configure_extensions(app):
+    global celery
     db.init_app(app)
-    migrate.init_app(app, db)
+    session.init_app(app)
     bootstrap.init_app(app)
+    migrate.init_app(app, db)
+    celery = Celery(
+        app.name,
+        broker=app.config['REDIS_URI'],
+        backend=app.config['REDIS_URI']
+    )
+    celery.conf.update(app.config)
 
 
 def configure_blueprints(app):

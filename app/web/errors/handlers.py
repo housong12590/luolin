@@ -1,4 +1,4 @@
-from app.errors import blueprint
+from app.web.errors import blueprint
 from flask import render_template
 
 
