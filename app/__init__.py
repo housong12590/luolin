@@ -41,9 +41,8 @@ def configure_extensions(app):
 
 
 def configure_blueprints(flask):
-    from app.web import web_app
-
-    flask.register_blueprint(web_app)
+    from app.web import web as web_bp
+    flask.register_blueprint(web_bp)
 
 
 def configure_error_handlers(app):
